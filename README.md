@@ -44,7 +44,7 @@ There's also a [tutorial video](https://drive.google.com/open?id=0B5hqni4_xCGadG
 
 _TODO: Link the Zoomdata connector testing guide when it's made publicly available_
 
-This package also includes a simple crate.io container pre-loaded with the Zoomdata connector testing reference data. It uses 
+This package also includes a simple crate.io container pre-loaded with the Zoomdata connector testing reference data. It uses
 [Docker](https://www.docker.com/) to run the container so no further installation is required.
 
 First, build the container with:
@@ -77,11 +77,16 @@ Run the meta test suite to validate server description and meta functionality:
 
 ## Limitations
 
-This connector has only been tested with the version 0.55.4 of crate.io. It's not guaranteed to work with any other versions.
+The connector uses the CrateDB JDBC driver 2.x, which means that it is
+compatible with CreateDB >= 0.57.0. The driver does not use the CrateDB
+transport port to connect to a CrateDB server any longer and the connection
+string format has changed since the driver version 1.x. Please see the
+[CrateDB JDBC documentation](https://crate.io/docs/reference/jdbc/en/2.1.1/#jdbc-driver-class)
+for your further reference.
 
 ## Additional Notes
 
-Although this implementation uses Java and some freely available libraries for convenience, they are not a *requirement* for 
+Although this implementation uses Java and some freely available libraries for convenience, they are not a *requirement* for
 building a connector server.
 
 Any language capable of generating code from [Apache Thrift](https://thrift.apache.org/) can be used.
